@@ -22,6 +22,7 @@ import android.util.Log;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.Surface;
@@ -211,6 +212,20 @@ public class CameraActivity extends Fragment {
                 }
               }
               return true;
+            }
+
+          });
+
+          frameContainerLayout.setFocusableInTouchMode(true);
+          frameContainerLayout.requestFocus();
+          frameContainerLayout.setOnKeyListener( new android.view.View.OnKeyListener() {
+            @Override
+            public boolean onKey( android.view.View v, int keyCode, android.view.KeyEvent event ) {
+              if( keyCode == android.view.KeyEvent.KEYCODE_BACK )
+              {
+                return true;
+              }
+              return false;
             }
           });
         }
