@@ -436,6 +436,8 @@ public class CameraActivity extends Fragment {
       size.height = temp;
     }
 
+    Camera.Size requestedSize = mCamera.new Size(size.width, size.height);
+
     double previewAspectRatio  = (double)previewSize.width / (double)previewSize.height;
 
     if (previewAspectRatio < 1.0) {
@@ -452,7 +454,7 @@ public class CameraActivity extends Fragment {
       Camera.Size supportedSize = supportedSizes.get(i);
 
       // Perfect match
-      if (supportedSize.equals(size)) {
+      if (supportedSize.equals(requestedSize)) {
         Log.d(TAG, "CameraPreview optimalPictureSize " + supportedSize.width + 'x' + supportedSize.height);
         return supportedSize;
       }
